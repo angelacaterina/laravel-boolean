@@ -19,6 +19,10 @@
                 height: 100vh;
                 margin: 0;
             }
+            .container{
+                width:80%;
+                margin: 0 auto;
+            }
 
             .full-height {
                 height: 100vh;
@@ -77,13 +81,14 @@
                     <a href="blog">Blog</a>
                 </div>
 
-                <div>
+                <div class="container">
+                    <h1>Posts</h1>
                     @foreach($posts as $post)
-                        <h2>{{$post->title}}</h2>
-                        <p>{{$post->body}}</p>
+                        <div>
+                            <h2>{{$post->title}}</h2>
+                            <p>{{$post->body}}</p>
+                        </div>
                     @endforeach
-                    
-                   
                 </div>
             </div>
         </div>
