@@ -20,77 +20,74 @@
                 margin: 0;
             }
             .container{
-                width:80%;
+                width: 84%;
+                height: 100%;
                 margin: 0 auto;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
+            .d-flex{
                 display: flex;
+            }
+            .j_center{
                 justify-content: center;
             }
-
-            .position-ref {
-                position: relative;
+            .j_around{
+                justify-content: space-around;
             }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
+            .t_center{
                 text-align: center;
             }
-
-            .title {
-                font-size: 84px;
+            .main-height {
+                height: 64vh;
             }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
+            /* SEZIONE NAVBAR */
+            nav{
+                height: 70px;
+                align-items: center;
+            }
+            nav a{
+                font-size: 16px;
+                color: #333338;
                 text-decoration: none;
-                text-transform: uppercase;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            nav a:not(:last-child){
+                margin-right: 70px;    
+            }
+            nav a.active,
+            nav a:hover{
+                color: #FC7523FC;
+                font-weight: 600; 
+                border-bottom: 3px solid #FC7523FC;       
+            }
+            /* CHIUSURA HEADER */
+            main{
+                padding: 30px 0;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="/" >Home</a>
-                    <a href="about">About</a>
-                    <a href="blog">Blog</a>
-                </div>
-
-                <div class="container">
-                    <h1>Posts</h1>
-                    @foreach($posts as $post)
-                        <div>
-                            <h2>{{$post->title}}</h2>
-                            <p>{{$post->body}}</p>
-                        </div>
-                    @endforeach
-                </div>
+        <header id="site_header">
+            <div class="d-flex j_center">
+                <h1>LARAVEL-BOOLEAN</h1>
             </div>
-        </div>
+            <!-- Navbar -->
+            <nav  class="d-flex j_center">
+            <a href="{{ route('home') }}" class="{{ Route::currentRouteName() === 'home' ? 'active' : '' }}">Home</a>
+                <a href="{{ route('blog') }}" class="{{ Route::currentRouteName() === 'blog' ? 'active' : '' }}">Blog</a>
+                <a href="{{ route('about') }}" class="{{ Route::currentRouteName() === 'about' ? 'active' : '' }}">About</a>
+            </nav>
+            <!-- /nav -->
+        </header>
+        <main>
+            <h2  class="t_center">Blog</h2>
+            <div class="container">
+                <h3>Posts</h3>
+                @foreach($posts as $post)
+                    <div>
+                        <h4>{{$post->title}}</h4>
+                        <p>{{$post->body}}</p>
+                    </div>
+                @endforeach
+            </div>
+        </main>
     </body>
 </html>
