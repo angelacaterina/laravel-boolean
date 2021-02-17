@@ -13,9 +13,9 @@ class HomeController extends Controller{
     public function about(){
         return view('about');
     }
-    public function blog(Post $post){
-        $posts = $post->all();
-        dd($posts);
-        return view('blog');
+    public function blog(){
+        $posts = Post::all();;
+        // dd($post);
+        return view('blog', compact('posts'));
     }
 }
